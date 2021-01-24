@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebStore.Models.Employee>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Employees</title>
+</head>
+<body>
+    <a href="~/Home/Index">Главная</a>
+    <hr />
+    <br />
+    <h3>Сотрудники</h3>
+    <br />
+
+    <table>
+        <thead>
+            <tr>
+                <td>№</td>
+                <td>Фамилия</td>
+                <td>Имя</td>
+                <td>Отчество</td>
+                <td>Возраст</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.Id</td>
+                    <td>@Html.ActionLink(employee.LastName, "Details", new { id = employee.Id })</td>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.Patronymic</td>
+                    <td>@employee.Age</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
