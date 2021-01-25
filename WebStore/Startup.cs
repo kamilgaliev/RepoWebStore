@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebStore.Infrastructure.Middleware;
 
 namespace WebStore
 {
@@ -36,10 +37,20 @@ namespace WebStore
 
             app.UseRouting();
 
-            // Проекция запроса на действие
+            app.UseWelcomePage("/welcome");
+
+            app.UseMiddleware<TestMiddleware>();
+
+            //app.MapWhen(context => context.Request.Query.ContainsKey("id") && context.Request.Query["id"] == "5",
+            //    context => context.Run(async request => await request.Response.WriteAsync("Hello with id == 5")));
+
+            //app.Map("/hello", context => context.Run(async request => await request.Response.WriteAsync("Hello!")));
+
+            
 
             app.UseEndpoints(endpoints =>
             {
+                // Проекция запроса на действие
                 endpoints.MapGet("/greetings", async context =>
                 {
                     await context.Response.WriteAsync("Greetings");
