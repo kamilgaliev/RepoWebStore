@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebStore.Conventions;
 using WebStore.Infrastructure.Middleware;
 
 namespace WebStore
@@ -23,7 +24,10 @@ namespace WebStore
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddMvc();
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            //services.AddMvc(opt => opt.Conventions.Add(new TestControllerModelConvention()));
+            services
+                .AddControllersWithViews(/*opt => opt.Conventions.Add(new TestControllerModelConvention())*/)
+                .AddRazorRuntimeCompilation();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
