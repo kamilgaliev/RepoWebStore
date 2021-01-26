@@ -42,7 +42,12 @@ namespace WebStore.Controllers
             return NotFound();
         }
 
-        
+        #region Create
+        public IActionResult Create()
+        {
+            return View("Edit", new EmployeeViewModel());
+        }
+        #endregion
 
         #region Edit
         public IActionResult Edit(int id)
@@ -84,7 +89,10 @@ namespace WebStore.Controllers
                 EmploymentDate = model.EmploymentDate
             };
 
-            _EmployeesData.Update(employee);
+            if (employee.Id == 0)
+                _EmployeesData.Add(employee);
+            else
+                _EmployeesData.Update(employee);
 
             return RedirectToAction("Index");
         }
