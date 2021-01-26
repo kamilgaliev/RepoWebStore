@@ -29,7 +29,7 @@
                 <td>@employee.Age</td>
                 <td>
                     <a asp-action="Details" asp-route-id="@employee.Id"><i class="fa fa-info-circle"></i></a> |
-                    <a href="#"><i class="fa fa-edit"></i></a> |
+                    <a asp-action="Edit" asp-route-id="@employee.Id"><i class="fa fa-edit"></i></a> |
                     <a href="#" class="text-danger"><i class="fa fa-trash-o"></i></a>
                 </td>
             </tr>
