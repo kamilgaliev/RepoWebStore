@@ -30,7 +30,9 @@
                 <td>
                     <a asp-action="Details" asp-route-id="@employee.Id"><i class="fa fa-info-circle"></i></a> |
                     <a asp-action="Edit" asp-route-id="@employee.Id"><i class="fa fa-edit"></i></a> |
-                    <a href="#" class="text-danger"><i class="fa fa-trash-o"></i></a>
+                    <form asp-action="DeleteConfirmed" asp-route-id="@employee.Id">
+                        <button type="submit"><i class="fa fa-trash-o text-danger"></i></button>
+                    </form>
                 </td>
             </tr>
         }
