@@ -26,6 +26,11 @@ namespace WebStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
+
+            //services.AddTransient<>(); // Регистрируем сервис, который не должен хранить состояние. То есть каждое обращение к нему создается новое
+            //services.AddScoped<>();  // Регистрируем сервис, который должен помнить состояние на время обработки входящего подключения
+            //services.AddSingleton<>(); // Регистрируем сервис, который хранит состояние на все время жизни приложения
+
             //services.AddMvc();
             //services.AddMvc(opt => opt.Conventions.Add(new TestControllerModelConvention()));
             services
