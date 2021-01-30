@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using WebStore.Domain.Entities;
 using WebStore.Models;
 
 namespace WebStore.Data
@@ -38,6 +39,44 @@ namespace WebStore.Data
                 DateofBirth = new DateTime(1991, 9, 20),
                 EmploymentDate = new DateTime(2016, 03, 11)
             }
+        };
+
+        public static IEnumerable<Section> Sections { get; } = new[]
+        {
+            new Section { Id = 1, Name = "Спорт", Order = 0 },
+            new Section { Id = 2, Name = "Nike", Order = 0, ParenId = 1},
+            new Section { Id = 3, Name = "Under Armour", Order = 1, ParenId = 1},
+            new Section { Id = 4, Name = "Adidas", Order = 2, ParenId = 1},
+            new Section { Id = 5, Name = "Puma", Order = 3, ParenId = 1},
+            new Section { Id = 6, Name = "ASICS", Order = 4, ParenId = 1},
+            new Section { Id = 7, Name = "Для Мужчин", Order = 1},
+            new Section { Id = 8, Name = "Fendi", Order = 0, ParenId = 7},
+            new Section { Id = 9, Name = "Guess", Order = 1, ParenId = 7},
+            new Section { Id = 10, Name = "Valentino", Order = 2, ParenId = 7},
+            new Section { Id = 11, Name = "Диор", Order = 3, ParenId = 7},
+            new Section { Id = 12, Name = "Версачи", Order = 4, ParenId = 7},
+            new Section { Id = 13, Name = "Армани", Order = 5, ParenId = 7},
+            new Section { Id = 14, Name = "Prada", Order = 6, ParenId = 7},
+            new Section { Id = 15, Name = "Дольче и Габбана", Order = 7, ParenId = 7},
+            new Section { Id = 16, Name = "Шанель", Order = 8, ParenId = 7},
+            new Section { Id = 17, Name = "Гуччи", Order = 9, ParenId = 7},
+            new Section { Id = 18, Name = "Для Женщин", Order = 2},
+            new Section { Id = 19, Name = "Fendi", Order = 0, ParenId = 18},
+            new Section { Id = 20, Name = "Guess", Order = 1, ParenId = 18},
+            new Section { Id = 21, Name = "Valentino", Order = 2, ParenId = 18},
+            new Section { Id = 22, Name = "Диор", Order = 3, ParenId = 18},
+            new Section { Id = 23, Name = "Версачи", Order = 4, ParenId = 18},
+        };
+
+        public static IEnumerable<Brand> Brands { get; } = new[]
+        {
+            new Brand { Id = 1, Name = "Acne", Order = 0 },
+            new Brand { Id = 2, Name = "Grune Erde", Order = 1 },
+            new Brand { Id = 3, Name = "Albiro", Order = 2 },
+            new Brand { Id = 4, Name = "Ronhill", Order = 3 },
+            new Brand { Id = 5, Name = "Oddmolly", Order = 4 },
+            new Brand { Id = 6, Name = "Boudestijn", Order = 5 },
+            new Brand { Id = 7, Name = "Roch creative culture", Order = 6 }
         };
     }
 }
