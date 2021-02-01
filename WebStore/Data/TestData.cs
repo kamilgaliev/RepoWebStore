@@ -66,6 +66,13 @@ namespace WebStore.Data
             new Section { Id = 21, Name = "Valentino", Order = 2, ParenId = 18},
             new Section { Id = 22, Name = "Диор", Order = 3, ParenId = 18},
             new Section { Id = 23, Name = "Версачи", Order = 4, ParenId = 18},
+            new Section { Id = 24, Name = "Для Детей", Order = 3},
+            new Section { Id = 25, Name = "Стиль", Order = 4},
+            new Section { Id = 26, Name = "Для дома", Order = 5},
+            new Section { Id = 27, Name = "Интерьер", Order = 6},
+            new Section { Id = 28, Name = "Одежда", Order = 7},
+            new Section { Id = 29, Name = "Сумки", Order = 8},
+            new Section { Id = 30, Name = "Обувь", Order = 9},
         };
 
         public static IEnumerable<Brand> Brands { get; } = new[]
