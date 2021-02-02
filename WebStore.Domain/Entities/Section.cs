@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using WebStore.Domain.Entities.Base;
 using WebStore.Domain.Entities.Base.Interfaces;
 
@@ -14,5 +11,10 @@ namespace WebStore.Domain.Entities
         public int Order { get; set; }
 
         public int? ParenId { get; set; }
+
+        [ForeignKey(nameof(ParenId))]
+        public Section Parent { get; set; }
+
+        public ICollection<Product> Products { get; set; }
     }
 }
