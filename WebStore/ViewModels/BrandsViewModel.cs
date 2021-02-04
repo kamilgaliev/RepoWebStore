@@ -11,5 +11,6 @@ namespace WebStore.ViewModels
 
         public string Name { get; init; }
 
+        public int ProductsCount { get; set; }
     }
 }
