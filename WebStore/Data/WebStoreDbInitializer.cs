@@ -137,7 +137,7 @@ namespace WebStore.Data
 
             async Task CheckRole(string RoleName)
             {
-                if (await _RoleManager.RoleExistsAsync(RoleName))
+                if (!await _RoleManager.RoleExistsAsync(RoleName))
                 {
                     _Logger.LogInformation("Роль отсутствует. Создаю...");
                     await _RoleManager.CreateAsync(new Role { Name = RoleName });
