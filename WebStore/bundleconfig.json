@@ -21,5 +21,22 @@
       "renameLocals": true,
       "gzip": true
     }
+  },
+  {
+    "outputFileName": "wwwroot/admin/css/admin.css",
+    "inputFiles": [
+      "wwwroot/admin/css/custom.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/admin/js/admin.js",
+    "inputFiles": [
+      "wwwroot/admin/js/custom.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true,
+      "gzip": true
+    }
   }
 ]

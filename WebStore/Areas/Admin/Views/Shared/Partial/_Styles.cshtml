@@ -1,0 +1,14 @@
+﻿    <!-- BOOTSTRAP STYLES-->
+<link href="~/admin/css/bootstrap.css" rel="stylesheet" />
+<!-- FONTAWESOME STYLES-->
+<link href="~/admin/css/font-awesome.css" rel="stylesheet" />
+<!-- GOOGLE FONTS-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+<environment include="Development">
+    <link href="~/admin/css/custom.css" rel="stylesheet" asp-append-version="true">
+</environment>
+
+<environment exclude="Development">
+    <link href="~/css/admin.min.css" rel="stylesheet" asp-append-version="true">
+</environment>
