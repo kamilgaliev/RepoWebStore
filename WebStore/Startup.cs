@@ -26,10 +26,11 @@ namespace WebStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
-            //services.AddMvc();
-            //services.AddMvc(opt => opt.Conventions.Add(new TestControllerModelConvention()));
+
+            services.AddTransient<IProductData, InMemoryProductData>();
+
             services
-                .AddControllersWithViews(/*opt => opt.Conventions.Add(new TestControllerModelConvention())*/)
+                .AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
         }
 
@@ -48,22 +49,10 @@ namespace WebStore
             app.UseWelcomePage("/welcome");
 
             app.UseMiddleware<TestMiddleware>();
-
-            //app.MapWhen(context => context.Request.Query.ContainsKey("id") && context.Request.Query["id"] == "5",
-            //    context => context.Run(async request => await request.Response.WriteAsync("Hello with id == 5")));
-
-            //app.Map("/hello", context => context.Run(async request => await request.Response.WriteAsync("Hello!")));
-
             
 
             app.UseEndpoints(endpoints =>
             {
-                // Проекция запроса на действие
-                endpoints.MapGet("/greetings", async context =>
-                {
-                    await context.Response.WriteAsync("Greetings");
-                });
-
                 endpoints.MapControllerRoute(
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");
