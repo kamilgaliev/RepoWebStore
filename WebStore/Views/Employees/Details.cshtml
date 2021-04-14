@@ -1,0 +1,39 @@
+﻿@model Employee
+
+@{
+    Layout = "_LayoutEmployees";
+    ViewData["Title"] = $"Сотрудник {Model.LastName}";
+}
+
+<h3>Сотрудник № @Model.Id</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>№</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Возраст</th>
+            <th>Дата рождения</th>
+            <th>Дата приема на работу</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.LastName</td>
+            <td>@Model.FirstName</td>
+            <td>@Model.Patronymic</td>
+            <td>@Model.Age</td>
+            <td>@Model.DateofBirth.ToShortDateString()</td>
+            <td>@Model.EmploymentDate.ToShortDateString()</td>
+        </tr>
+
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-default">Сотрудники</a>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактировать</a>
+<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Удалить</a>
