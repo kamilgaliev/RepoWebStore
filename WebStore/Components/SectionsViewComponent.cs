@@ -24,7 +24,8 @@ namespace WebStore.Components
                 { 
                     Id = s.Id,
                     Name = s.Name,
-                    Order = s.Order
+                    Order = s.Order,
+                    ProductsCount = s.Products.Count()
                 }).ToList();
 
             int OrderSortMethod(SectionViewModel a,SectionViewModel b) => Comparer<int>.Default.Compare(a.Order,b.Order);
@@ -40,7 +41,8 @@ namespace WebStore.Components
                         Id = child_sections.Id,
                         Name = child_sections.Name,
                         Order = child_sections.Order,
-                        Parent = parent_section
+                        Parent = parent_section,
+                        ProductsCount = child_sections.Products.Count()
                     });
                 }
 
