@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebStore.Conventions;
+using WebStore.Infrastructure.Interfaces;
+using WebStore.Infrastructure.Middleware;
+using WebStore.Infrastructure.Services;
 
 namespace WebStore
 {
@@ -21,8 +25,12 @@ namespace WebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
             //services.AddMvc();
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            //services.AddMvc(opt => opt.Conventions.Add(new TestControllerModelConvention()));
+            services
+                .AddControllersWithViews(/*opt => opt.Conventions.Add(new TestControllerModelConvention())*/)
+                .AddRazorRuntimeCompilation();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -30,16 +38,27 @@ namespace WebStore
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
             }
 
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            //var greetings = Configuration["Greetings"];
+            app.UseWelcomePage("/welcome");
+
+            app.UseMiddleware<TestMiddleware>();
+
+            //app.MapWhen(context => context.Request.Query.ContainsKey("id") && context.Request.Query["id"] == "5",
+            //    context => context.Run(async request => await request.Response.WriteAsync("Hello with id == 5")));
+
+            //app.Map("/hello", context => context.Run(async request => await request.Response.WriteAsync("Hello!")));
+
+            
 
             app.UseEndpoints(endpoints =>
             {
+                // Проекция запроса на действие
                 endpoints.MapGet("/greetings", async context =>
                 {
                     await context.Response.WriteAsync("Greetings");
@@ -48,7 +67,7 @@ namespace WebStore
                 endpoints.MapControllerRoute(
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");
-                // http://localhost:5000 -> controller = "Home" action = "Index" �������� = null
+                // http://localhost:5000 -> controller = "Home" action = "Index" параметр = null
             });
         }
     }
