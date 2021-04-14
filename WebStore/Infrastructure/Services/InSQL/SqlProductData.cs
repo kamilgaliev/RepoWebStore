@@ -19,13 +19,16 @@ namespace WebStore.Infrastructure.Services.InSQL
             _db = db;
         }
 
+        public IEnumerable<Section> GetSections() => _db.Sections.Include(s => s.Products);
         public IEnumerable<Brand> GetBrands() => _db.Brands.Include(s => s.Products);
 
         public IEnumerable<Product> GetProducts(ProductFilter Filter = null)
         {
-            IQueryable<Product> query = _db.Products;
+            IQueryable<Product> query = _db.Products
+                .Include(product => product.Brand)
+                .Include(product => product.Section);
 
-            if(Filter?.Ids?.Length > 0)
+            if (Filter?.Ids?.Length > 0)
             {
                 query = query.Where(product => Filter.Ids.Contains(product.Id));
             }
@@ -40,8 +43,6 @@ namespace WebStore.Infrastructure.Services.InSQL
 
             return query;
         }
-
-        public IEnumerable<Section> GetSections() => _db.Sections.Include(s => s.Products);
 
         public Product GetProductById(int id) => _db.Products
             .Include(product => product.Brand)
