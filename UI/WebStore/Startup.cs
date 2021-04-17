@@ -7,12 +7,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using WebStore.DAL.Context;
-using WebStore.Data;
+using WebStore.Services.Data;
 using WebStore.Domain.Entities.Identity;
-using WebStore.Infrastructure.Interfaces;
+using WebStore.Interfaces.Services;
 using WebStore.Infrastructure.Middleware;
-using WebStore.Infrastructure.Services;
-using WebStore.Infrastructure.Services.InCookies;
+using WebStore.Services.InCookies;
 using WebStore.Infrastructure.Services.InMemory;
 using WebStore.Infrastructure.Services.InSQL;
 

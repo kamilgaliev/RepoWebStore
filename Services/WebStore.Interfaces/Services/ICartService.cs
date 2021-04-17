@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebStore.ViewModels;
+using WebStore.Domain.ViewModels;
 
-namespace WebStore.Infrastructure.Interfaces
+namespace WebStore.Interfaces.Services
 {
     public interface ICartService
     {
