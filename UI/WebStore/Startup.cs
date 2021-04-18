@@ -14,6 +14,8 @@ using WebStore.Infrastructure.Middleware;
 using WebStore.Services.InCookies;
 using WebStore.Infrastructure.Services.InMemory;
 using WebStore.Infrastructure.Services.InSQL;
+using WebStore.Interfaces.TestAPI;
+using WebStore.Clients.Values;
 
 namespace WebStore
 {
@@ -77,6 +79,8 @@ namespace WebStore
             services.AddTransient<ICartService, InCookiesCartService>();
 
             services.AddTransient<IOrderService, SqlOrderService>();
+
+            services.AddTransient<IValuesService, ValuesClient>();
 
             services
                 .AddControllersWithViews()
