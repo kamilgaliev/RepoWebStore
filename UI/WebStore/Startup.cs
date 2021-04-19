@@ -11,9 +11,9 @@ using WebStore.Services.Data;
 using WebStore.Domain.Entities.Identity;
 using WebStore.Interfaces.Services;
 using WebStore.Infrastructure.Middleware;
-using WebStore.Services.InCookies;
-using WebStore.Infrastructure.Services.InMemory;
-using WebStore.Infrastructure.Services.InSQL;
+using WebStore.Services.Services.InCookies;
+using WebStore.Services.Services.InMemory;
+using WebStore.Services.Services.InSQL;
 using WebStore.Interfaces.TestAPI;
 using WebStore.Clients.Values;
 
@@ -35,7 +35,7 @@ namespace WebStore
 
             services.AddTransient<WebStoreDbInitializer>();
 
-            services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
+            
 
             //services.AddTransient<IProductData, InMemoryProductData>();
 
@@ -73,6 +73,8 @@ namespace WebStore
 
                 opt.SlidingExpiration = true;
             });
+
+            services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
 
             services.AddTransient<IProductData, SqlProductData>();
 
