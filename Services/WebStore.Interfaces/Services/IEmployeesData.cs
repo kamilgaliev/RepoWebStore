@@ -9,7 +9,11 @@ namespace WebStore.Interfaces.Services
 
         Employee Get(int id);
 
+        Employee GetByName(string LastName,string FirstName, string Patronymic);
+
         int Add(Employee employee);
+
+        Employee Add(string LastName, string FirstName, string Patronymic);
 
         void Update(Employee employee);
 

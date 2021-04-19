@@ -30,6 +30,11 @@ namespace WebStore.Services.Services.InMemory
             return employee.Id;
         }
 
+        public Employee Add(string LastName, string FirstName, string Patronymic)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Delete(int id)
         {
             var item = Get(id);
@@ -48,6 +53,11 @@ namespace WebStore.Services.Services.InMemory
         public Employee Get(int id)
         {
             return _Employees.FirstOrDefault(employee => employee.Id == id);
+        }
+
+        public Employee GetByName(string LastName, string FirstName, string Patronymic)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Employee employee)
