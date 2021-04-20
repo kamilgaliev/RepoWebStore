@@ -30,7 +30,7 @@ namespace WebStore.Services.Services.InMemory
             return employee.Id;
         }
 
-        public Employee Add(string LastName, string FirstName, string Patronymic)
+        public Employee Add(string LastName, string FirstName, string Patronymic, int Age)
         {
             throw new NotImplementedException();
         }

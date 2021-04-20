@@ -16,6 +16,7 @@ using WebStore.Services.Services.InMemory;
 using WebStore.Services.Services.InSQL;
 using WebStore.Interfaces.TestAPI;
 using WebStore.Clients.Values;
+using WebStore.Clients.Employees;
 
 namespace WebStore
 {
@@ -74,7 +75,9 @@ namespace WebStore
                 opt.SlidingExpiration = true;
             });
 
-            services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
+            //services.AddTransient<IEmployeesData, InMemoryEmployeesData>();
+
+            services.AddTransient<IEmployeesData, EmployeesClient>();
 
             services.AddTransient<IProductData, SqlProductData>();
 

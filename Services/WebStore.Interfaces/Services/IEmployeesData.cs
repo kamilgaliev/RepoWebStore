@@ -13,7 +13,7 @@ namespace WebStore.Interfaces.Services
 
         int Add(Employee employee);
 
-        Employee Add(string LastName, string FirstName, string Patronymic);
+        Employee Add(string LastName, string FirstName, string Patronymic,int Age);
 
         void Update(Employee employee);
 
