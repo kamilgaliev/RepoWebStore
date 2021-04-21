@@ -4,5 +4,6 @@
     {
         public const string TestWebAPI = "api/values";
         public const string Employees = "api/employess";
+        public const string Products = "api/products";
     }
 }
