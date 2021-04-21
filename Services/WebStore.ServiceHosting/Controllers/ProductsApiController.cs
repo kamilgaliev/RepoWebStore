@@ -22,6 +22,12 @@ namespace WebStore.ServiceHosting.Controllers
             _ProductData = ProductData;
         }
 
+        [HttpGet("brands/{id:int}")]
+        public BrandDTO GetBrandById(int id)
+        {
+            return _ProductData.GetBrandById(id);
+        }
+
         [HttpGet("brands")]
         public IEnumerable<BrandDTO> GetBrands()
         {
@@ -38,6 +44,12 @@ namespace WebStore.ServiceHosting.Controllers
         public IEnumerable<ProductDTO> GetProducts(ProductFilter Filter = null)
         {
             return _ProductData.GetProducts(Filter);
+        }
+
+        [HttpGet("sections/{id:int}")]
+        public SectionDTO GetSectionById(int id)
+        {
+            return _ProductData.GetSectionById(id);
         }
 
         [HttpGet("sections")]
