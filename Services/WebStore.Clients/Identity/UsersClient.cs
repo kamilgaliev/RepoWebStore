@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
@@ -194,7 +193,7 @@ namespace WebStore.Clients.Identity
         }
         public async Task SetNormalizedEmailAsync(User user, string email, CancellationToken Cancel)
         {
-            var response = await PostAsync($"{Address}/User/SetNormalizedEmail/{email}", user, Cancel);
+            var response = await PostAsync($"{Address}/SetNormalizedEmail/{email}", user, Cancel);
             user.NormalizedEmail = await response.Content.ReadAsAsync<string>(Cancel);
         }
 
