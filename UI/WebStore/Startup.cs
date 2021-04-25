@@ -37,28 +37,31 @@ namespace WebStore
 
             //services.AddTransient<WebStoreDbInitializer>();
 
-            
+
 
             //services.AddTransient<IProductData, InMemoryProductData>();
 
             services.AddIdentity<User, Role>()
                 //.AddEntityFrameworkStores<WebStoreDB>()
+                .AddIdentityWebStoreWebAPIClients() //через builder
                 .AddDefaultTokenProviders();
 
-            #region Identity stores custom implementation
+            //services.AddIdentityWebStoreWebAPIClients();
 
-            services.AddTransient<IUserStore<User>, UsersClient>();
-            services.AddTransient<IUserRoleStore<User>, UsersClient>();
-            services.AddTransient<IUserPasswordStore<User>, UsersClient>();
-            services.AddTransient<IUserEmailStore<User>, UsersClient>();
-            services.AddTransient<IUserPhoneNumberStore<User>, UsersClient>();
-            services.AddTransient<IUserTwoFactorStore<User>, UsersClient>();
-            services.AddTransient<IUserClaimStore<User>, UsersClient>();
-            services.AddTransient<IUserLoginStore<User>, UsersClient>();
+            //#region Identity stores custom implementation
 
-            services.AddTransient<IRoleStore<Role>, RolesClient>();
+            //services.AddTransient<IUserStore<User>, UsersClient>();
+            //services.AddTransient<IUserRoleStore<User>, UsersClient>();
+            //services.AddTransient<IUserPasswordStore<User>, UsersClient>();
+            //services.AddTransient<IUserEmailStore<User>, UsersClient>();
+            //services.AddTransient<IUserPhoneNumberStore<User>, UsersClient>();
+            //services.AddTransient<IUserTwoFactorStore<User>, UsersClient>();
+            //services.AddTransient<IUserClaimStore<User>, UsersClient>();
+            //services.AddTransient<IUserLoginStore<User>, UsersClient>();
 
-            #endregion
+            //services.AddTransient<IRoleStore<Role>, RolesClient>();
+
+            //#endregion
 
             services.Configure<IdentityOptions>(opt =>
             {
