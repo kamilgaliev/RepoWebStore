@@ -18,6 +18,8 @@ using WebStore.Clients.Employees;
 using WebStore.Clients.Products;
 using WebStore.Clients.Orders;
 using WebStore.Clients.Identity;
+using Microsoft.Extensions.Logging;
+using WebStore.Logger;
 
 namespace WebStore
 {
@@ -113,9 +115,11 @@ namespace WebStore
                 .AddRazorRuntimeCompilation();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env/*, WebStoreDbInitializer db*/)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env/*, WebStoreDbInitializer db*/,ILoggerFactory log)
         {
             //db.Initialize();
+
+            log.AddLog4Net();
 
             if (env.IsDevelopment())
             {
