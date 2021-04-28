@@ -30,10 +30,15 @@ namespace WebStore.Clients.Employees
 
         public bool Delete(int id)
         {
-            _Logger.LogInformation($"Удаление сотрудника с id = {id}");
-            var result = Delete($"{Address}/{id}").IsSuccessStatusCode;
-            _Logger.LogInformation("Удаление сотрудника с id = {0} - {1}", id, result ? "выполнено" : "не найден!");
-            return result;
+            _Logger.LogInformation($"Удаление сотрудника с id = {id}...");
+
+            using (_Logger.BeginScope($"Удаление сотрудника с id = {id}"))
+            {
+                var result = Delete($"{Address}/{id}").IsSuccessStatusCode;
+                _Logger.LogInformation("Удаление сотрудника с id = {0} - {1}", id, result ? "выполнено" : "не найден!");
+                return result;
+            }
+            
         }
 
         public IEnumerable<Employee> Get() => Get<IEnumerable<Employee>>(Address);
