@@ -137,7 +137,7 @@ namespace WebStore
             app.UseWelcomePage("/welcome");
 
             app.UseMiddleware<TestMiddleware>();
-            
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
