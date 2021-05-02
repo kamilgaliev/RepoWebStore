@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using WebStore.DAL.Context;
-using WebStore.Services.Data;
 using WebStore.Domain.Entities.Identity;
 using WebStore.Interfaces.Services;
 using WebStore.Infrastructure.Middleware;
@@ -20,6 +17,7 @@ using WebStore.Clients.Orders;
 using WebStore.Clients.Identity;
 using Microsoft.Extensions.Logging;
 using WebStore.Logger;
+using WebStore.Services.Services;
 
 namespace WebStore
 {
@@ -103,7 +101,9 @@ namespace WebStore
             //services.AddTransient<IProductData, SqlProductData>();
             services.AddTransient<IProductData, ProductsClient>();
 
-            services.AddTransient<ICartService, InCookiesCartService>();
+            //services.AddTransient<ICartService, InCookiesCartService>();
+            services.AddTransient<ICartService, CartService>();
+            services.AddTransient<ICartStore,InCookiesCartStore>();
 
             //services.AddTransient<IOrderService, SqlOrderService>();
             services.AddTransient<IOrderService, OrdersClient>();
