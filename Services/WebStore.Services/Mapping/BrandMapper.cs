@@ -19,6 +19,7 @@ namespace WebStore.Services.Mapping
                     Id = Brand.Id,
                     Name = Brand.Name,
                     Order = Brand.Order,
+                    ProductsCount = Brand.Products.Count(),
                 };
         }
 
