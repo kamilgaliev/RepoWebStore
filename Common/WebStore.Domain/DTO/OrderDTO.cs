@@ -50,6 +50,8 @@ namespace WebStore.Domain.DTO
         /// </summary>
         public int Id { get; set; }
 
+        public int ProductId { get; set; }
+
         /// <summary>
         /// Цена
         /// </summary>
