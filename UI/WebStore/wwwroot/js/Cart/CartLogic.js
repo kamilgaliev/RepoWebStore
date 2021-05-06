@@ -14,8 +14,8 @@
     initEvents: function () {
         $(".add-to-cart").click(Cart.addToCart);
 
-        $(".cart_quantity_up").click();
-        $(".cart_quantity_down").click(Cart.incrementItem);
+        $(".cart_quantity_up").click(Cart.incrementItem);
+        $(".cart_quantity_down").click();
         $(".cart_quantity_delete").click();
     },
 
