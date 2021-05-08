@@ -39,7 +39,7 @@ namespace WebStore.Components
                     Id = s.Id,
                     Name = s.Name,
                     Order = s.Order,
-                    ProductsCount = _ProductData.GetProducts(new Domain.ProductFilter { SectionId = s.Id }).Count()
+                    ProductsCount = _ProductData.GetProducts(new Domain.ProductFilter { SectionId = s.Id }).Product.Count()
                 }).ToList();
 
             int OrderSortMethod(SectionViewModel a, SectionViewModel b) => Comparer<int>.Default.Compare(a.Order, b.Order);
