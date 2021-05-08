@@ -7,6 +7,7 @@
 
 <section>
     <div class="container">
+        <vc:bread-crumbs />
         <div class="row">
             <div class="col-sm-3">
                 <partial name="Partial/_LeftSlideBar" />
@@ -14,6 +15,13 @@
 
             <div class="col-sm-9 padding-right">
                 <partial name="Partial/_FeaturesItems" model="Model.Products"/>
+
+                <paging page-model="Model.PageViewModel"
+                        page-action="Index"
+                        page-url-SectionId="@Model.SectionId"
+                        page-url-BrandId="@Model.BrandId"
+                        page-url-PageSize="@Context.Request.Query["PageSize"]">
+                </paging>
             </div>
         </div>
     </div>

@@ -17,5 +17,10 @@ namespace WebStore.Domain.Models
         public DateTime DateofBirth { get; set; }
 
         public DateTime EmploymentDate { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id}: ФИО - {LastName} {FirstName} {Patronymic}, {Age} лет, Дата рождения {DateofBirth}, Прием на работу {EmploymentDate}";
+        }
     }
 }

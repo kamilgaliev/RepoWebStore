@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebStore.Interfaces;
 
 namespace WebStore.ServiceHosting.Controllers
 {
-    [Route("api/[controller]")]
+    [Route(WebAPI.TestWebAPI)]
     [ApiController]
     public class ValuesController : ControllerBase
     {

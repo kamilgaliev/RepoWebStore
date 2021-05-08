@@ -3,10 +3,9 @@
 @inject IProductData ProductData
 @{ 
     var products = ProductData
-        .GetProducts()
+        .GetProducts().Product
         .OrderBy(p => p.Order)
-        .Take(6)
-        .ToView();
+        .Take(6).FromDTO().ToView();
 }
 <partial name="Partial/_Slider" />
 
