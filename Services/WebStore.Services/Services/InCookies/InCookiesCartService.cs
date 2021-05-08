@@ -119,7 +119,7 @@ namespace WebStore.Services.Services.InCookies
 
             });
 
-            var products_view_models = products.FromDTO().ToView().ToDictionary(p => p.Id);
+            var products_view_models = products.Product.FromDTO().ToView().ToDictionary(p => p.Id);
 
             return new CartViewModel
             {

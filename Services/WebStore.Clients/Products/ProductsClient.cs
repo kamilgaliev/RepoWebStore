@@ -30,11 +30,11 @@ namespace WebStore.Clients.Products
             return Get<ProductDTO>($"{Address}/{id}");
         }
 
-        public IEnumerable<ProductDTO> GetProducts(ProductFilter Filter = null)
+        public PageProductsDTO GetProducts(ProductFilter Filter = null)
         {
             return Post(Address, Filter ?? new ProductFilter())
                 .Content
-                .ReadAsAsync<IEnumerable<ProductDTO>>()
+                .ReadAsAsync<PageProductsDTO>()
                 .Result;
         }
 

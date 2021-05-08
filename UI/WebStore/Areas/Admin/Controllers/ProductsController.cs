@@ -17,7 +17,7 @@ namespace WebStore.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            return View(_ProductData.GetProducts().FromDTO());
+            return View(_ProductData.GetProducts().Product.FromDTO());
         }
 
         public IActionResult Edit(int id)

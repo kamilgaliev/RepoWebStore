@@ -40,7 +40,7 @@ namespace WebStore.Services.Tests.Services
             _ProductDataMock = new Mock<IProductData>();
             _ProductDataMock
                 .Setup(c => c.GetProducts(It.IsAny<ProductFilter>()))
-                .Returns(new[]
+                .Returns(new PageProductsDTO(new[]
                 {
                     new ProductDTO
                     {
@@ -72,7 +72,7 @@ namespace WebStore.Services.Tests.Services
                         Section = new SectionDTO { Id = 3, Name = "Section 3", Order = 3},
                         Price = 3.3m,
                     },
-                });
+                },3));
 
             _CartStoreMock = new Mock<ICartStore>();
             _CartStoreMock.Setup(c => c.Cart).Returns(_Cart);
