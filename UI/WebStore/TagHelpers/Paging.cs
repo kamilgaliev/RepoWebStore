@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using WebStore.Domain.ViewModels;
 
 namespace WebStore.TagHelpers
@@ -56,7 +57,7 @@ namespace WebStore.TagHelpers
                 PageUrlValues["page"] = PageNumber;
                 //a.Attributes["href"] = Url.Action(PageAction, PageUrlValues);
                 a.Attributes["href"] = "#";
-                foreach (var (key, value) in PageUrlValues)
+                foreach (var (key, value) in PageUrlValues.Where(v => v.Value is not null))
                 {
                     a.MergeAttribute($"data-{key}", value.ToString());
                 }
