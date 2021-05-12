@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Domain.Entities.Identity;
 using WebStore.Interfaces.Services;
+using WebStore.Services.Mapping;
 
 namespace WebStore.Areas.Admin.Controllers
 {
@@ -16,21 +17,21 @@ namespace WebStore.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            return View(_ProductData.GetProducts());
+            return View(_ProductData.GetProducts().Product.FromDTO());
         }
 
         public IActionResult Edit(int id)
         {
             var product = _ProductData.GetProductById(id);
             if (product is null) return NotFound();
-            return View(product);
+            return View(product.FromDTO());
         }
 
         public IActionResult Delete(int id)
         {
             var product = _ProductData.GetProductById(id);
             if (product is null) return NotFound();
-            return View(product);
+            return View(product.FromDTO());
         }
     }
 }

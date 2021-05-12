@@ -4,6 +4,8 @@
 
 <script src="~/js/jquery.prettyPhoto.js"></script>
 
+<script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+
 
 <environment include="Development">
     <script src="~/js/price-range.js"></script>
@@ -13,3 +15,16 @@
 <environment exclude="Development">
     <script src="~/js/site.min.js" asp-append-version="true"></script>
 </environment>
+
+<script src="~/js/Cart/CartLogic.js" asp-append-version="true"></script>
+
+<script>
+    $(function () {
+        Cart.init({
+            getCartViewLink: "@Url.Action("GetCartView","Cart")",
+            addToCartLink: "@Url.Action("AddAPI","Cart")",
+            decrementLink: "@Url.Action("DecrementAPI", "Cart")",
+            removeFromCartLink: "@Url.Action("RemoveAPI", "Cart")",
+        });
+    })
+</script>

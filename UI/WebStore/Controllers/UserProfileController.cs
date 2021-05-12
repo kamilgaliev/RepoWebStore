@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebStore.Interfaces.Services;
 using WebStore.Domain.ViewModels;
+using WebStore.Services.Mapping;
 
 namespace WebStore.Controllers
 {
@@ -27,7 +26,7 @@ namespace WebStore.Controllers
                 Name = order.Name,
                 Phone = order.Phone,
                 Address = order.Address,
-                TotalPrice = order.Items.Sum(item => item.Price * item.Quantity)
+                TotalPrice = order.Items.Sum(item => item.FromDTO().TotalItemPrice)
             }));
         }
     }
