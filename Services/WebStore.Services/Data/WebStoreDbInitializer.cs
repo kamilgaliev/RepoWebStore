@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebStore.DAL.Context;
 using WebStore.Domain.Entities.Identity;
+using WebStore.Services.Services.Data;
 
 namespace WebStore.Services.Data
 {
