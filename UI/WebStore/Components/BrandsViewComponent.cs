@@ -13,7 +13,11 @@ namespace WebStore.Components
 
         public BrandsViewComponent(IProductData ProductData) => _ProductData = ProductData;
 
-        public IViewComponentResult Invoke() => View(GetBrands());
+        public IViewComponentResult Invoke(string BrandId)
+        {
+            ViewBag.BrandId = int.TryParse(BrandId,out var id) ? id: (int?) null;
+            return View(GetBrands());
+        }
 
         private IEnumerable<BrandsViewModel> GetBrands() => _ProductData.GetBrands()
             .OrderBy(brand => brand.Order)
@@ -21,7 +25,7 @@ namespace WebStore.Components
             { 
                 Id = brand.Id,
                 Name = brand.Name,
-                ProductsCount = brand.Products.Count()
+                ProductsCount = brand.ProductsCount,
             });
 
     }
