@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using WebStore.Services.Data;
 using WebStore.Domain.Models;
 using WebStore.Interfaces.Services;
+using WebStore.Services.Services.Data;
 
-namespace WebStore.Infrastructure.Services.InMemory
+namespace WebStore.Services.Services.InMemory
 {
     public class InMemoryEmployeesData : IEmployeesData
     {
@@ -31,6 +30,11 @@ namespace WebStore.Infrastructure.Services.InMemory
             return employee.Id;
         }
 
+        public Employee Add(string LastName, string FirstName, string Patronymic, int Age)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Delete(int id)
         {
             var item = Get(id);
@@ -49,6 +53,11 @@ namespace WebStore.Infrastructure.Services.InMemory
         public Employee Get(int id)
         {
             return _Employees.FirstOrDefault(employee => employee.Id == id);
+        }
+
+        public Employee GetByName(string LastName, string FirstName, string Patronymic)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Employee employee)
