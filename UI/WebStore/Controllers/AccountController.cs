@@ -42,30 +42,33 @@ namespace WebStore.Controllers
                 UserName = Model.UserName,
             };
 
-            var registration_result = await _UserManager.CreateAsync(user, Model.Password);
-
-            if (registration_result.Succeeded)
+            using(_Logger.BeginScope("Регистрация пользователя {0}", Model.UserName))
             {
-                _Logger.LogInformation($"Пользователь {Model.UserName} успешно зарегистрирован");
+                var registration_result = await _UserManager.CreateAsync(user, Model.Password);
 
-                await _UserManager.AddToRoleAsync(user, Role.Users);
+                if (registration_result.Succeeded)
+                {
+                    _Logger.LogInformation($"Пользователь {Model.UserName} успешно зарегистрирован");
 
-                _Logger.LogInformation($"Пользователь {Model.UserName} наделен ролью {Role.Users}");
+                    await _UserManager.AddToRoleAsync(user, Role.Users);
 
-                await _SignInManager.SignInAsync(user,false);
+                    _Logger.LogInformation($"Пользователь {Model.UserName} наделен ролью {Role.Users}");
 
-                return RedirectToAction("Index","Home");
+                    await _SignInManager.SignInAsync(user, false);
+
+                    return RedirectToAction("Index", "Home");
+                }
+
+                _Logger.LogWarning($"В процессе регистрации пользователя {Model.UserName} возникли ошибки: " +
+                    $"{string.Join(", ", registration_result.Errors.Select(e => e.Description))}");
+
+                foreach (var error in registration_result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
             }
 
-            _Logger.LogWarning($"В процессе регистрации пользователя {Model.UserName} возникли ошибки: " +
-                $"{string.Join(", ", registration_result.Errors.Select(e => e.Description))}");
-
-            foreach (var error in registration_result.Errors)
-            {
-                ModelState.AddModelError("", error.Description);
-            }
-
-            return View(Model);
+                return View(Model);
         }
         #endregion
 

@@ -15,7 +15,7 @@ namespace WebStore.Components
         {
             var sections = _ProductData.GetSections();
 
-            var parent_sections = sections.Where(s => s.ParenId == null);
+            var parent_sections = sections.Where(s => s.ParentId == null);
 
             var parent_sections_views = parent_sections
                 .Select(s => new SectionViewModel 
@@ -23,14 +23,14 @@ namespace WebStore.Components
                     Id = s.Id,
                     Name = s.Name,
                     Order = s.Order,
-                    ProductsCount = s.Products.Count()
+                    ProductsCount = _ProductData.GetProducts(new Domain.ProductFilter { SectionId = s.Id }).Count()
                 }).ToList();
 
             int OrderSortMethod(SectionViewModel a,SectionViewModel b) => Comparer<int>.Default.Compare(a.Order,b.Order);
 
             foreach (var parent_section in parent_sections_views)
             {
-                var childs = sections.Where(s => s.ParenId == parent_section.Id);
+                var childs = sections.Where(s => s.ParentId == parent_section.Id);
 
                 foreach (var child_sections in childs)
                 {
@@ -40,7 +40,7 @@ namespace WebStore.Components
                         Name = child_sections.Name,
                         Order = child_sections.Order,
                         Parent = parent_section,
-                        ProductsCount = child_sections.Products.Count()
+                        ProductsCount = 1
                     });
                 }
 
